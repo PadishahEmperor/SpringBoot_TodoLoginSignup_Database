@@ -9,3 +9,5 @@ Following are few pictures of the beautiful project that i've built.
 ![LoginPage](https://github.com/PadishahEmperor/SpringBoot_TodoLoginSignup_Database/blob/main/SpringTodo%20Images/LoginPage.png))
 
 ![Database](https://github.com/PadishahEmperor/SpringBoot_TodoLoginSignup_Database/blob/main/SpringTodo%20Images/Database2.png)
+
+![SignUp](https://github.com/PadishahEmperor/SpringBoot_TodoLoginSignup_Database/blob/main/SpringTodo%20Images/SignUpPage.png)
