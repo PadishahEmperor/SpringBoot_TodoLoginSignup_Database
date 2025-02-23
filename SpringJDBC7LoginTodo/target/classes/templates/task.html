@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Task Page</title>
+    <link rel="stylesheet" th:href="@{/stylesTask.css}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📌 My To-Do List</h1>
+            <a href="/taskManager?logout" class="logout-btn">🚪 Logout</a>
+        </header>
+
+        <!-- Task Form -->
+        <form action="/taskManager" method="post" class="task-form">
+            <input type="text" placeholder="✍ Add a new task..." name="task" required>
+            <button type="submit">➕ Add Task</button>
+        </form>
+
+        <!-- Task List -->
+        <section class="task-list">
+            <h2>Your Tasks</h2>
+            <div class="tasks">
+               <div th:each="task : ${taskList}" class="task-card">
+    <!-- Task Text -->
+    <p th:text="${task.task}" 
+       th:style="${task.completed ? 'text-decoration: line-through; color: gray;' : ''}"
+       class="task-text">
+    </p>
+
+    <!-- Buttons Container -->
+    <div class="task-actions">
+        <!-- Toggle Button Form -->
+        <form th:action="@{/taskManager/updateTaskStatus}" method="post">
+            <input type="hidden" name="taskId" th:value="${task.taskId}">
+            <input type="hidden" name="completed" th:value="${!task.completed}">
+            <button type="submit"
+                th:text="${task.completed ? '✔' : '⏳'}"
+                th:classappend="${task.completed ? 'completed' : 'pending'}"
+                class="task-toggle-btn">
+            </button>
+        </form>
+
+        <!-- Delete Button Form -->
+        <form th:action="@{/taskManager/deleteTask}" method="post">
+            <input type="hidden" name="taskId" th:value="${task.taskId}">
+            <button type="submit" class="delete-btn">🗑</button>
+        </form>
+    </div>
+</div>
+               
+            </div>
+        </section>
+    </div>
+</body>
+</html>
